@@ -1,0 +1,13 @@
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\bin\Debug\netcoreapp3.1\Proje.exe
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\bin\Debug\netcoreapp3.1\Proje.deps.json
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\bin\Debug\netcoreapp3.1\Proje.runtimeconfig.json
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\bin\Debug\netcoreapp3.1\Proje.runtimeconfig.dev.json
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\bin\Debug\netcoreapp3.1\Proje.dll
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\bin\Debug\netcoreapp3.1\Proje.pdb
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\obj\Debug\netcoreapp3.1\Proje.csprojAssemblyReference.cache
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\obj\Debug\netcoreapp3.1\Proje.AssemblyInfoInputs.cache
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\obj\Debug\netcoreapp3.1\Proje.AssemblyInfo.cs
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\obj\Debug\netcoreapp3.1\Proje.csproj.CoreCompileInputs.cache
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\obj\Debug\netcoreapp3.1\Proje.dll
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\obj\Debug\netcoreapp3.1\Proje.pdb
+C:\Users\GRUNDIG\Desktop\p216_17-11-2020-aghayevilkin\Proje\Proje\obj\Debug\netcoreapp3.1\Proje.genruntimeconfig.cache
