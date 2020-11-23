@@ -82,24 +82,6 @@ namespace Proje
             var sale = Sales.RemoveAll(s => s.No == salesNo);
         }
 
-
-
-        //public void changeProduct(string code, string newName, int count, double price, Categories categories)
-        //{
-        //    var products = Products.Find(p => p.Code == code);
-        //    if (Products == null)
-        //    {
-        //        throw new NotImplementedException("Bu Kodda Item Tapilmadi");
-        //    }
-
-        //    products.Name = newName;
-        //    products.Count = count;
-        //    products.Price = price;
-        //    products.Categories = categories;
-
-
-        //}
-
         public void ChangeProduct(string cod, string name)
         {
             Product product = Products.Find(p => p.Code == cod);
@@ -207,6 +189,15 @@ namespace Proje
             return dates    ;
         }
 
+        public void AddSaleItems(Product product, int count)
+        {
+            SaleItem salesItems = new SaleItem(product) { Count = count };
+
+            foreach (var item in Sales)
+            {
+                item.SaleItems.Add(salesItems);
+            }
+        }
 
 
         public List<Sale> GetSaleNo(int no)

@@ -16,7 +16,7 @@ namespace Proje
         {
 
             _totalNo++;
-            _no = _totalNo-1;
+            _no = _totalNo;
 
           this.Products=product;
            

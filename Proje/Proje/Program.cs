@@ -33,10 +33,10 @@ namespace Proje
 
                         } while (YesNo());
                         break;
-
                     case "2":
                         do
                         {
+                            suEmeliyyat();
                         } while (YesNo());
                         break;
 
@@ -46,13 +46,11 @@ namespace Proje
                     default:
                         break;
                 }
-
             }
-
-
-
-
         }
+
+
+        #region Operations on Products
 
 
         public static void muEmeliyyat()
@@ -100,6 +98,7 @@ namespace Proje
             }
 
         }
+
 
         #region psMenu 1 AddProduct
         private static void AddProduct()
@@ -189,49 +188,6 @@ namespace Proje
 
         }
 
-        public static void Category()
-        {
-            Console.WriteLine("Select a new category: ");
-            Console.WriteLine("1-Car");
-            Console.WriteLine("2-Motorcycle");
-            Console.WriteLine("Select an option");
-        }
-
-        public static bool CategoryValid(string categories)
-        {
-            string kateq = categories;
-            Categories CategoryEnum = (Categories)Convert.ToInt32(categories);
-            switch (kateq)
-            {
-                case "1":
-                    CategoryEnum = Categories.Car;
-                    return true;
-                case "2":
-                    CategoryEnum = Categories.Motorcycle;
-                    return true;
-                default:
-                    return false;
-            }
-        }
-
-        public static Categories CategorySetter(string category)
-        {
-
-            string categ = category;
-            Categories CategoryEnum = (Categories)Convert.ToInt32(category);
-            switch (categ)
-            {
-                case "1":
-                    CategoryEnum = Categories.Car;
-                    break;
-                case "2":
-                    CategoryEnum = Categories.Motorcycle;
-                    break;
-                default:
-                    break;
-            }
-            return CategoryEnum;
-        }
 
 
         #endregion
@@ -257,7 +213,7 @@ namespace Proje
                         break;
                     case "3":
                         changeProductCount();
-                        break; 
+                        break;
                     case "4":
                         changeProductCategory();
                         break;
@@ -317,7 +273,7 @@ namespace Proje
             {
                 Console.WriteLine("Add a new count: ");
                 int count = Convert.ToInt32(Console.ReadLine());
-                mMenu.ChangeProduct(cod, count );
+                mMenu.ChangeProduct(cod, count);
                 Console.WriteLine($"Count Changed\nNew count of the product: {mMenu.ChangedCount(cod)}");
             }
             else
@@ -336,7 +292,7 @@ namespace Proje
 
                 Category();
                 Console.WriteLine("Add a new category: ");
-                string category =Console.ReadLine();
+                string category = Console.ReadLine();
                 mMenu.ChangeProduct(cod, CategorySetter(category));
                 Console.WriteLine($"Category Changed\nNew category of the product: {mMenu.ChangedProductCategory(cod)}");
             }
@@ -370,7 +326,7 @@ namespace Proje
 
                 if (mMenu.Products.Exists(r => r.Code == cod))
                 {
-                    var removed = mMenu.Products.RemoveAll(r=>r.Code == cod);
+                    var removed = mMenu.Products.RemoveAll(r => r.Code == cod);
                     Console.WriteLine("The product has been deleted");
                     loop = false;
                     foreach (var item in mMenu.Products)
@@ -486,6 +442,260 @@ namespace Proje
 
         #endregion
 
+        #endregion
+
+
+
+        #region Operations on Sales
+
+
+        private static void suEmeliyyat()
+        {
+
+            Console.Clear();
+            Console.WriteLine(" Secim edin:");
+            Console.WriteLine("1) Yeni satis elave etmek");
+            Console.WriteLine("2) Return of the product put up for sale");
+            Console.WriteLine("3) Satisin silinmesi");
+            Console.WriteLine("4) Butun satislari goster");
+            Console.WriteLine("5) Tarix araligina gore satislari goster");
+            Console.WriteLine("6) Mebleg araligina gore satislari goster");
+            Console.WriteLine("7) Tarixe gore satisin gosterlimesi");
+            Console.WriteLine("8) Nomreye esasen satisin melumatlarini goster");
+            Console.WriteLine("9) Mehsullar uzerinde emeliyyat aparmaq");
+            Console.WriteLine("10) Esas menyuya qayit");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    AddSale();
+                    break;
+                case "2":
+                    ReturnedProduct();
+                    break;
+                case "3":
+                    Console.Write($"Esas menyuya qayitmaq ucun {ConsoleKey.N} secin: ");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+        #region AddSale
+
+        private static void AddSale()
+        {
+            if (ShowProductsCount() > 0)
+            {
+                bool loop = true;
+                while (loop)
+                {
+                    Console.WriteLine("Enter the product code");
+                    string cod = Console.ReadLine();
+
+                    if (mMenu.Products.Exists(p => p.Code == cod))
+                    {
+                        Console.WriteLine("Enter the sales number of this product");
+                        int count = Convert.ToInt32(Console.ReadLine());
+
+
+
+
+                        if (FindProduct(cod).Count >= count && count > 0)
+                        {
+                            mMenu.Addsale(FindProduct(cod), count);
+                            Console.WriteLine("\nProduct Added!");
+
+                            while (YesNo("\nSelect to add another product..."))
+                            {
+
+                                if (ShowProductsCount() > 0)
+                                {
+                                    AddItems();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nNo Product !");
+                                    break;
+                                }
+
+                            }
+                            Console.WriteLine("\nSales Added !");
+                            Console.WriteLine("__________");
+                            foreach (var salesitems in FindSales(FindSalesNo()).SaleItems)
+                            {
+                                Console.WriteLine($"\nproduct name: {salesitems.Products.Name}\nnumber products on sale: {salesitems.Count}");
+                            }
+                            loop = false;
+                            Console.WriteLine("__________");
+
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("there are not as many products as you enter");
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("There is no product that fits this code");
+                    }
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("No Product \nAdd the Product!\n");
+            }
+
+
+        }
+
+
+        #region SalesFind
+        public static Product FindProduct(string cod)
+        {
+            Product product = mMenu.Products.Find(p => p.Code == cod);
+            return product;
+        }
+
+        public static Sale FindSales(int no)
+        {
+            Sale sale = mMenu.Sales.Find(s => s.No == no);
+            return sale;
+        }
+
+        public static int FindSalesNo()
+        {
+            int No = 0;
+            foreach (var item in mMenu.Sales)
+            {
+                No = item.No;
+            }
+            return No;
+        }
+
+        public static SaleItem FSItemNo(int no, int salesitemno)
+        {
+
+            Sale sales = mMenu.Sales.Find(n => n.No == no);
+
+            SaleItem salesItems = sales.SaleItems.Find(n => n.No == salesitemno);
+            return salesItems;
+        }
+
+
+        public static int FSIteamCountNo(int no, int sitemNO)
+        {
+            int count = 0;
+
+            foreach (var item in FindSales(no).SaleItems)
+            {
+                if (item.No == sitemNO)
+                {
+                    count = item.Count;
+                }
+            }
+            return count;
+        }
+
+
+        public static int FindSalesItemNo()
+        {
+            int number = 0;
+            foreach (var sales in mMenu.Sales)
+            {
+                foreach (var item in sales.SaleItems)
+                {
+                    number = item.No;
+                }
+            }
+            return number;
+        }
+
+        #endregion
+
+
+
+
+        #endregion
+
+
+        #region Return of the product put up for sale
+
+        private static void ReturnedProduct()
+        {
+            Console.WriteLine("\nEnter the sales number");
+            int no = 0;
+            try
+            {
+                no = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("\nAn error occurred!\nOnly number must be entered!");
+            }
+            if (mMenu.Sales.Exists(s => s.No == no))
+            {
+                Console.WriteLine("\nProducts for sale");
+                foreach (var sales in FindSales(no).SaleItems)
+                {
+                    Console.WriteLine($"\nThe number of the product for sale: {sales.No}\nThe product on sale is ordinary: {sales.Products.Name}\nNumber of products on sale: {sales.Count}");
+                }
+                Console.WriteLine("\nEnter the sales product number");
+
+                int SitemNo = 0;
+                try
+                {
+                    SitemNo = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("\nAn error occurred!\nOnly number must be entered!");
+                }
+                if (FindSales(no).SaleItems.Exists(n => n.No == SitemNo) && SitemNo > 0)
+                {
+                    Console.WriteLine("Add the count you will return the product");
+                    int count = 0;
+                    try
+                    {
+                        count = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("The product was returned");
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("\nAn error occurred!\nOnly number must be entered!");
+                    }
+                    if (FSIteamCountNo(no, SitemNo) >= count && count > 0)
+                    {
+                        mMenu.cancleSaleProduct(no, SitemNo, count);
+
+
+                        Console.WriteLine("_________________________");
+                        Console.WriteLine($"Number of products on sale: {FSItemNo(no, SitemNo).Count}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("There are not as many products as you enter");
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("\nThere is no sales product that matches the count you entered");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nThere are no sales for this number");
+            }
+        }
+
+        #endregion
+
+        #endregion
         public static bool YesNo(string text)
         {
             Console.Write($"{text}... [y] :\nGeri qayıtmaq üçün istenilen düymeye basın...");
@@ -500,5 +710,129 @@ namespace Proje
             Console.WriteLine();
             return (response == ConsoleKey.Y);
         }
+
+
+
+
+        public static void Category()
+        {
+            Console.WriteLine("Select a new category: ");
+            Console.WriteLine("1-Car");
+            Console.WriteLine("2-Motorcycle");
+            Console.WriteLine("Select an option");
+        }
+
+        public static bool CategoryValid(string categories)
+        {
+            string kateq = categories;
+            Categories CategoryEnum = (Categories)Convert.ToInt32(categories);
+            switch (kateq)
+            {
+                case "1":
+                    CategoryEnum = Categories.Car;
+                    return true;
+                case "2":
+                    CategoryEnum = Categories.Motorcycle;
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        public static Categories CategorySetter(string category)
+        {
+
+            string categ = category;
+            Categories CategoryEnum = (Categories)Convert.ToInt32(category);
+            switch (categ)
+            {
+                case "1":
+                    CategoryEnum = Categories.Car;
+                    break;
+                case "2":
+                    CategoryEnum = Categories.Motorcycle;
+                    break;
+                default:
+                    break;
+            }
+            return CategoryEnum;
+        }
+
+
+        public static int ShowSalesCount()
+        {
+            int count = 0;
+            foreach (var sales in mMenu.Sales)
+            {
+                foreach (var item in sales.SaleItems)
+                {
+                    count = item.Count;
+                }
+            }
+            return count;
+        }
+
+        public static int ShowProductsCount()
+        {
+            int count = 0;
+            foreach (var item in mMenu.Products)
+            {
+                count = item.Count;
+            }
+            return count;
+        }
+
+
+
+        public static int ShowSalesItemsCount()
+        {
+            int count = 0;
+            foreach (var item in mMenu.Sales)
+            {
+                foreach (var salesItems in item.SaleItems)
+                {
+                    count = salesItems.Count;
+                }
+            }
+
+            return count;
+        }
+
+
+        public static void AddItems()
+        {
+            Console.WriteLine("Enter the product code");
+            string cod = Console.ReadLine();
+
+            if (mMenu.Products.Exists(p => p.Code == cod))
+            {
+                Console.WriteLine("Enter the sales number of this product");
+                int count = Convert.ToInt32(Console.ReadLine());
+
+                if (FindProduct(cod).Count >= count && count > 0)
+                {
+                    mMenu.AddSaleItems(FindProduct(cod), count);
+                    FindProduct(cod).Count -= count;
+                    foreach (var item in mMenu.Sales)
+                    {
+                        item.TotalAmount += count * FindProduct(cod).Price;
+                    }
+                    Console.WriteLine("\nProduct Added !");
+
+                }
+                else
+                {
+                    Console.WriteLine("There are no products you entered");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("There is no product that fits this code");
+            }
+
+        }
+
+
     }
 }

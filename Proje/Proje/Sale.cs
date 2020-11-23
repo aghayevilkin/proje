@@ -16,7 +16,7 @@ namespace Proje
         public Sale(List<SaleItem> salesItems)
         {
             _totalNo++; 
-            _no = _totalNo;
+            _no = _totalNo-1;
 
             SaleItems = new List<SaleItem>();
             SaleItems = salesItems;
