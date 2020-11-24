@@ -14,15 +14,20 @@ namespace Proje
         static void Main(string[] args)
         {
 
+
+        #region Menu
+
             bool wantToContinue = true;
             while (wantToContinue)
             {
                 Console.Clear();
-                Console.WriteLine("Chose an option:");
-                Console.WriteLine("1>> Carry out operations on products");
-                Console.WriteLine("2>> Carry out operations on sales");
-                Console.WriteLine("3>> Log out");
-                Console.WriteLine("\r\nSelect an option: ");
+                Console.WriteLine("*******************************************************************************");
+                Console.WriteLine("*                              Chose an option:                               *");
+                Console.WriteLine("*                     <1> Carry out operations on products                    *");
+                Console.WriteLine("*                     <2> Carry out operations on sales                       *");
+                Console.WriteLine("*                     <3>            Log out                                  *");
+                Console.WriteLine("*******************************************************************************");
+                Console.Write("\r\nSelect an option: ");
 
                 switch (Console.ReadLine())
                 {
@@ -39,7 +44,6 @@ namespace Proje
                             suEmeliyyat();
                         } while (YesNo());
                         break;
-
                     case "3":
                         wantToContinue = false;
                         break;
@@ -49,6 +53,7 @@ namespace Proje
             }
         }
 
+        #endregion
 
         #region Operations on Products
 
@@ -57,16 +62,18 @@ namespace Proje
         {
 
             Console.Clear();
-            Console.WriteLine("Chose an option:");
-            Console.WriteLine("1.1) Add New Product");
-            Console.WriteLine("1.2) Change Product");
-            Console.WriteLine("1.3) Remove Product");
-            Console.WriteLine("1.4) Show All Products");
-            Console.WriteLine("1.5) Show Products by Category");
-            Console.WriteLine("1.6) Show Proudcts by Price Range");
-            Console.WriteLine("1.7) Search Products by Name");
-            Console.WriteLine("1.8) Esas menyuya qayit");
-
+            Console.WriteLine("*******************************************************************************");
+            Console.WriteLine("*                              Chose an option                                *");
+            Console.WriteLine("*                           1.1) Add New Product                              *");
+            Console.WriteLine("*                           1.2) Change Product                               *");
+            Console.WriteLine("*                           1.3) Remove Product                               *");
+            Console.WriteLine("*                           1.4) Show All Products                            *");
+            Console.WriteLine("*                           1.5) Show Products by Category                    *");
+            Console.WriteLine("*                           1.6) Show Proudcts by Price Range                 *");
+            Console.WriteLine("*                           1.7) Search Products by Name                      *");
+            Console.WriteLine("*                           1.8) Return to the main menu                      *");
+            Console.WriteLine("*******************************************************************************");
+            Console.Write("\r\nSelect an option: ");
 
             switch (Console.ReadLine())
             {
@@ -96,9 +103,7 @@ namespace Proje
                 default:
                     break;
             }
-
         }
-
 
         #region psMenu 1 AddProduct
         private static void AddProduct()
@@ -198,11 +203,15 @@ namespace Proje
         {
             if (mMenu.Products.Count > 0)
             {
-                Console.WriteLine("Chose an Option: ");
-                Console.WriteLine("1-Change Product Name: ");
-                Console.WriteLine("2-Change Product Price: ");
-                Console.WriteLine("3-Change Product Count: ");
-                Console.WriteLine("4-Change Product Category: ");
+                Console.WriteLine("*******************************************************************************");
+                Console.WriteLine("*                             Chose an option                                 *");
+                Console.WriteLine("*                         1-Change Product Name:                              *");
+                Console.WriteLine("*                         2-Change Product Price:                             *");
+                Console.WriteLine("*                         3-Change Product Count:                             *");
+                Console.WriteLine("*                         4-Change Product Category:                          *");
+                Console.WriteLine("*******************************************************************************");
+                Console.Write("\r\nSelect an option: ");
+
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -217,7 +226,6 @@ namespace Proje
                     case "4":
                         changeProductCategory();
                         break;
-
                     default:
                         break;
                 }
@@ -453,17 +461,18 @@ namespace Proje
         {
 
             Console.Clear();
-            Console.WriteLine(" Secim edin:");
-            Console.WriteLine("1) Yeni satis elave etmek");
-            Console.WriteLine("2) Return of the product put up for sale");
-            Console.WriteLine("3) Satisin silinmesi");
-            Console.WriteLine("4) Butun satislari goster");
-            Console.WriteLine("5) Tarix araligina gore satislari goster");
-            Console.WriteLine("6) Mebleg araligina gore satislari goster");
-            Console.WriteLine("7) Tarixe gore satisin gosterlimesi");
-            Console.WriteLine("8) Nomreye esasen satisin melumatlarini goster");
-            Console.WriteLine("9) Mehsullar uzerinde emeliyyat aparmaq");
-            Console.WriteLine("10) Esas menyuya qayit");
+            Console.WriteLine("*******************************************************************************");
+            Console.WriteLine("*                              Chose an option:                               *");
+            Console.WriteLine("*                        1) Add new sales                                     *");
+            Console.WriteLine("*                        2) Return of the product put up for sale             *");
+            Console.WriteLine("*                        3) Remove Sale                                       *");
+            Console.WriteLine("*                        4) Show All Sales                                    *");
+            Console.WriteLine("*                        5) Show Sales Price                                  *");
+            Console.WriteLine("*                        6) Show sales by date                                *");
+            Console.WriteLine("*                        7) Show sales by date range                          *");
+            Console.WriteLine("*                        8) Show sales information based on the number        *");
+            Console.WriteLine("*******************************************************************************");
+            Console.Write("\r\nSelect an option: ");
 
             switch (Console.ReadLine())
             {
@@ -474,6 +483,24 @@ namespace Proje
                     ReturnedProduct();
                     break;
                 case "3":
+                    RemoveSale();
+                    break;
+                case "4":
+                    saSales();
+                    break;
+                case "5":
+                    ssPrice();
+                    break;
+                case "6":
+                    ssDate();
+                    break;
+                case "7":
+                    ssDateRange();
+                    break;
+                case "8":
+                    ssNo();
+                    break;
+                case "9":
                     Console.Write($"Esas menyuya qayitmaq ucun {ConsoleKey.N} secin: ");
                     break;
                 default:
@@ -590,12 +617,12 @@ namespace Proje
         public static int FSIteamCountNo(int no, int sitemNO)
         {
             int count = 0;
-
             foreach (var item in FindSales(no).SaleItems)
             {
                 if (item.No == sitemNO)
                 {
                     count = item.Count;
+
                 }
             }
             return count;
@@ -621,7 +648,6 @@ namespace Proje
 
 
         #endregion
-
 
         #region Return of the product put up for sale
 
@@ -672,7 +698,6 @@ namespace Proje
                     {
                         mMenu.cancleSaleProduct(no, SitemNo, count);
 
-
                         Console.WriteLine("_________________________");
                         Console.WriteLine($"Number of products on sale: {FSItemNo(no, SitemNo).Count}");
                     }
@@ -695,17 +720,334 @@ namespace Proje
 
         #endregion
 
+        #region RemoveSale
+
+        private static void RemoveSale()
+        {
+            if (mMenu.Sales.Count > 0)
+            {
+                Console.WriteLine("Enter the sales number");
+                int no = 0;
+                try
+                {
+                    no = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("\nAn error occurred!\nOnly number must be entered!");
+                    return;
+                }
+                if (no > 0 && mMenu.Sales.Exists(s => s.No == no))
+                {
+                    mMenu.CancleSaleGeneral(no);
+                    Console.WriteLine("Sales deleted");
+                }
+                else
+                {
+                    Console.WriteLine("\nThere are no sales for this number");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nNo Sales!");
+            }
+        }
+
+
         #endregion
+
+        #region ShowAllSales
+
+        private static void saSales()
+        {
+            if (mMenu.Sales.Count > 0)
+            {
+                foreach (var sales in mMenu.Sales)
+                {
+                    Console.WriteLine("____________________");
+                    Console.WriteLine($"Sales number: { sales.No}\nThe total amount of sales: {sales.TotalAmount}\nSales date: {sales.SaleDate}");
+                    if (FindSales(sales.No).SaleItems.Count > 0)
+                    {
+                        int count = 0;
+                        foreach (var item in FindSales(sales.No).SaleItems)
+                        {
+                            count += item.Count;
+                        }
+                        Console.WriteLine($"Number of products on sale: {count}");
+                    }
+                    else
+                    {
+                        foreach (var item in sales.SaleItems)
+                        {
+                            Console.WriteLine($"Number of products on sale: {item.Count}");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No Sales\nAdd sales!\n");
+            }
+        }
+
+
+        #endregion
+
+        #region ShowSalesPrice
+
+        private static void ssPrice()
+        {
+            if (mMenu.Sales.Count > 0)
+            {
+                Console.WriteLine("Enter the price range: ");
+                Console.Write("Min: ");
+                double min = 0;
+                try
+                {
+                    min = Convert.ToDouble(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("\nAn error occurred !\nShould be only one number!");
+                    return;
+                }
+                if (min > 0)
+                {
+                    Console.Write("Max: ");
+                    double max = 0;
+                    try
+                    {
+                        max = Convert.ToDouble(Console.ReadLine());
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("\nAn error occurred !\nShould be only one number!");
+                        return;
+                    }
+                    if (max > 0)
+                    {
+                        if (mMenu.Sales.Exists(p => p.TotalAmount >= min && p.TotalAmount <= max))
+                        {
+                            foreach (var sales in mMenu.GetSaleAmount(min, max))
+                            {
+                                Console.WriteLine($"Sales number: { sales.No}\nThe total amount of sales: {sales.TotalAmount}\nSales date: {sales.SaleDate}");
+                                if (FindSales(sales.No).SaleItems.Count > 0)
+                                {
+                                    int count = 0;
+                                    foreach (var item in FindSales(sales.No).SaleItems)
+                                    {
+                                        count += item.Count;
+                                    }
+                                    Console.WriteLine($"Number of products on sale:{count}");
+                                }
+                                else
+                                {
+                                    foreach (var item in sales.SaleItems)
+                                    {
+
+                                        Console.WriteLine($"Number of products on sale: {item.Count}");
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("There are no sales in this price range");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Enter the correct number!");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Enter the correct number!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No Sales\nAdd sales!\n");
+            }
+        }
+
+
+        #endregion
+
+        #region ShowSaleNo
+
+        private static void ssNo()
+        {
+            Console.WriteLine("Enter the sales number: ");
+            int No = 0;
+            try
+            {
+                No = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("\nAn error occurred!\nOnly number must be entered!");
+                return;
+            }
+            if (mMenu.Sales.Exists(p => p.No == No))
+            {
+                foreach (var sales in mMenu.GetSaleNo(No))
+                {
+                    Console.WriteLine($"Sales number: { sales.No}\nThe total amount of sales: {sales.TotalAmount}\nSales date: {sales.SaleDate}");
+                    foreach (var item in sales.SaleItems)
+                    {
+                        Console.WriteLine($"Product name on sale: {item.Products.Name}\nThe number of the product on sale: {item.No}\nNumber of products on sale: {item.Count}");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("There are no sales for this number");
+            }
+        }
+
+
+        #endregion
+
+        #region ShowSalesDate
+
+        private static void ssDate()
+        {
+            if (mMenu.Sales.Count > 0)
+            {
+                Console.WriteLine("Enter date (day / month / year)");
+                string Date = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(Date))
+                {
+                    DateTime date;
+                    if (DateTime.TryParse(Date, out date))
+                    {
+                        foreach (var sales in mMenu.GetSaleDate(date))
+                        {
+                            Console.WriteLine($"Sales number: { sales.No}\nThe total amount of sales: {sales.TotalAmount}\nSales date: {sales.SaleDate}");
+                            if (FindSales(sales.No).SaleItems.Count > 0)
+                            {
+                                int count = 0;
+                                foreach (var item in FindSales(sales.No).SaleItems)
+                                {
+                                    count += item.Count;
+                                }
+                                Console.WriteLine($"Number of products on sale: {count}");
+                            }
+                            else
+                            {
+                                foreach (var item in sales.SaleItems)
+                                {
+                                    Console.WriteLine($"Number of products on sale: {item.Count}");
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Date entered incorrectly !");
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("The line cannot be left blank !");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No Sales !");
+            }
+        }
+
+
+        #endregion
+
+        #region Show sales by date range
+
+        private static void ssDateRange()
+        {
+            if (mMenu.Sales.Count > 0)
+            {
+                Console.WriteLine("Enter start date (day / month / year)");
+                string sD = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(sD))
+                {
+                    DateTime SD = new DateTime();
+                    if (DateTime.TryParse(sD, out SD))
+                    {
+                        Console.WriteLine("Enter End date (day / month / year)");
+                        string eD = Console.ReadLine();
+                        if (!string.IsNullOrWhiteSpace(eD))
+                        {
+                            DateTime enD = new DateTime();
+                            if (DateTime.TryParse(eD, out enD))
+                            {
+                                foreach (var sales in mMenu.GetSaleDates(SD, enD))
+                                {
+                                    Console.WriteLine($"Sales number: { sales.No}\nThe total amount of sales: {sales.TotalAmount}\nSales date: {sales.SaleDate}");
+                                    if (FindSales(sales.No).SaleItems.Count > 0)
+                                    {
+                                        int count = 0;
+                                        foreach (var item in FindSales(sales.No).SaleItems)
+                                        {
+                                            count += item.Count;
+                                        }
+                                        Console.WriteLine($"Number of products on sale: {count}");
+                                    }
+                                    else
+                                    {
+                                        foreach (var item in sales.SaleItems)
+                                        {
+
+                                            Console.WriteLine($"Number of products on sale: {item.Count}");
+                                        }
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Date entered incorrectly!");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("The line cannot be left blank !");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Date entered incorrectly!");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The line cannot be left blank !");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No Sales!");
+            }
+        }
+
+
+        #endregion
+
+        #endregion
+
+        #region AuxiliaryMethods
         public static bool YesNo(string text)
         {
-            Console.Write($"{text}... [y] :\nGeri qayıtmaq üçün istenilen düymeye basın...");
+            Console.Write($"{text}... [y] :\nPress the desired button to return...");
             ConsoleKey response = Console.ReadKey(false).Key;
             Console.WriteLine();
             return (response == ConsoleKey.Y);
         }
         public static bool YesNo()
         {
-            Console.Write("Bu menyuda davam etmek üçün... [y] :\nAna menyuya qayıtmaq üçün istenilen düymeye basın...");
+            Console.Write("Bu menyuda davam etmək... [y] :\nPress any key to return to the main menu...");
             ConsoleKey response = Console.ReadKey(false).Key;
             Console.WriteLine();
             return (response == ConsoleKey.Y);
@@ -833,6 +1175,7 @@ namespace Proje
 
         }
 
+        #endregion
 
     }
 }

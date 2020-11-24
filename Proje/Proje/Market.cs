@@ -51,23 +51,18 @@ namespace Proje
         public void cancleSaleProduct(int salesNo, int salesItemsNo, int SalesItemsCount)
         {
 
-            foreach (var saless in Sales)
+            foreach (var saleS in Sales)
             {
-                if (saless.No == salesNo)
+                if (saleS.No == salesNo)
                 {
-                    foreach (var salesitems in saless.SaleItems)
+                    foreach (var salesitems in saleS.SaleItems)
                     {
                         if (salesitems.No == salesItemsNo)
                         {
-                            if (SalesItemsCount<=salesitems.Count)
-                            {
-                                salesitems.Count -= SalesItemsCount;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Max {0} Daxil ede bilersiniz",salesitems.Count);
-                            }
-                           
+                            Product product = Products.Find(p => p.Code == salesitems.Products.Code);
+                            salesitems.Count -= SalesItemsCount;
+                            product.Count += SalesItemsCount;
+                            saleS.TotalAmount -= salesitems.Products.Price * SalesItemsCount;  
                         }
                     }
                 }
@@ -79,7 +74,17 @@ namespace Proje
 
         public void CancleSaleGeneral(int salesNo)
         {
-            var sale = Sales.RemoveAll(s => s.No == salesNo);
+            {
+                Sale sale = Sales.Find(p => p.No == salesNo);
+                foreach (var item in sale.SaleItems)
+                {
+                    Product product = Products.Find(p => p.Code == item.Products.Code);
+                    product.Count += item.Count;
+                    sale.TotalAmount -= product.Price * item.Count;
+                    item.Count -= item.Count;
+                }
+                var stis = Sales.RemoveAll(s => s.No == salesNo);
+            }
         }
 
         public void ChangeProduct(string cod, string name)
@@ -169,7 +174,7 @@ namespace Proje
 
         public List<Sale> GetSaleAmount(double startAmount, double endAmount)
         {
-            var amounts = Sales.FindAll(a =>Convert.ToDouble( a.TotalAmount) >= startAmount && Convert.ToDouble( a.TotalAmount) <= endAmount);
+            var amounts = Sales.FindAll(a => a.TotalAmount >= startAmount && a.TotalAmount <= endAmount);
             return amounts;
         }
 
@@ -177,7 +182,7 @@ namespace Proje
 
         public List<Sale> GetSaleDate(DateTime datetime)
         {
-            var date = Sales.FindAll(d => d.SaleDate == datetime);
+            var date = Sales.FindAll(d => d.SaleDate.Date == datetime.Date);
             return date;
         }
 
@@ -185,7 +190,7 @@ namespace Proje
 
         public List<Sale> GetSaleDates(DateTime startDate, DateTime endDate)
         {
-            var dates = Sales.FindAll(d => d.SaleDate >= startDate && d.SaleDate <= endDate);
+            var dates = Sales.FindAll(d => d.SaleDate.Date >= startDate.Date && d.SaleDate.Date <= endDate.Date);
             return dates    ;
         }
 
