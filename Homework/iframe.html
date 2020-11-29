@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Html and Css</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="./images/favicon.png" type="image/gif" sizes="16x16" />
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <a class="active" href="./index.html">Home</a>
+            <a href="./register.html">Register</a>
+            <a href="./table.html">Table</a>
+            <a href="./iframe.html">Iframe</a>
+        </div>
+    </header>
+    <br/>
+    <br/>
+    <main>
+
+        <style>
+            .line {
+                text-align: center;
+                padding: 5px;
+                background-color: #333;
+                color: white;
+            }
+            
+            .mapouter {
+                position: relative;
+                text-align: right;
+                height: 545px;
+                width: 571px;
+            }
+            
+            .gmap_canvas {
+                overflow: hidden;
+                background: none!important;
+                height: 545px;
+                width: 571px;
+            }
+        </style>
+        <h1 style="text-align: center;">YouTube</h1>
+        <p style="text-align: center;">Tüm Dünya'yı Şoke Eden 11 Beklenmedik Gol.</p>
+        <hr>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/oguiY4jhObM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <div class="line"></div>
+        <h1 style="text-align: center;">Map</h1>
+        <p style="text-align: center;">Map of Azerbaijan</p>
+        <hr>
+
+        <div class="mapouter">
+            <div class="gmap_canvas"><iframe width="571" height="545" id="gmap_canvas" src="https://maps.google.com/maps?q=Azerbaycan&t=&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                <a href=" https://sites.google.com/view/maps-api-v2/mapv2 "></a>
+            </div>
+        </div>
+
+        <div class="line"></div>
+        <h1 style="text-align: center;">Website</h1>
+        <p style="text-align: center;">My Website</p>
+        <iframe src="./index.html" width="100%" height="300" style="border:1px solid">
+       </iframe>
+
+    </main>
+    <br/>
+
+    <footer>All rights reserved !</footer>
+
+</body>
+
+</html>

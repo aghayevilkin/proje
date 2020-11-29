@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+    margin-top: 30px;
+}
+
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+select {
+    text-align: center;
+    padding: 16px;
+}
+
+fieldset {
+    width: 17%;
+    border: none solid #333;
+    box-sizing: border-box;
+    text-align: center;
+    margin: auto;
+}
+
+.register {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 1000%;
+    text-decoration: none;
+}
+
+.register:hover {
+    opacity: 0.8;
+}
+
+.register:active {
+    background-color: #4caf50;
+}
+
+form {
+    border: 3px solid #f1f1f1;
+}
+
+footer {
+    text-align: center;
+    padding: 5px;
+    background-color: #333;
+    color: white;
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    background: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #4caf50;
+    color: white;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="age"],
+input[type="password"] {
+    width: 100;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.container {
+    text-align: center;
+    padding: 16px;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 10%;
+    border-radius: 20%;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+}
