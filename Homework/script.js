@@ -1,9 +1,12 @@
-const navToggle = document.querySelector(".nav-toggle");
-const links = document.querySelector(".links");
+let navToggle = document.querySelector(".navbar-toggle");
 
 navToggle.addEventListener("click", () => {
-    console.log(links.classList.contains("show-links"));
-    links.classList.toggle("show-links");
+    document.querySelector(".toggle-menu").classList.toggle("active");
+    document.querySelector("html").classList.toggle("block-scroll");
+    document.querySelector("#content").classList.toggle("block-scroll");
+    document.querySelector("#content2").classList.toggle("block-scroll");
+    document.querySelector("#content3").classList.toggle("block-scroll");
+    document.querySelector("#footer").classList.toggle("block-scroll");
+    navToggle.parentNode.classList.toggle("container");
+    navToggle.parentNode.classList.toggle("container-fluid");
 });
-
-window.addEventListener("resize", () => links.classList.remove("show-links"));

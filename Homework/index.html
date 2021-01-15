@@ -15,48 +15,77 @@
 
 <body>
     <div id="header">
-        <div class="nav-center">
-            <div class="nav-header">
-                <img class="logo" src="./assets/img/logo.svg" alt="logo">
-                <button class="nav-toggle">
-                    <img class="hamburger" src="./assets/img/hamburger.svg" alt="hamburger">
+        <nav class="navbar">
+            <div class="container">
+                <span class="logo">
+                    <img src="./assets/img/logo.svg" alt="" />
+                </span>
+                <button class="navbar-toggle btn btn-default">
+                    <span class="navbar-toggle-icon">
+                        <img src="./assets/img/hamburger.svg" alt="" />
+                    </span>
                 </button>
+                <div class="navbar-items">
+                    <ul class="items">
+                        <li class="links"><a href="#">services</a></li>
+                        <li class="links"><a href="#">product</a></li>
+                        <li class="links"><a href="#">technology</a></li>
+                        <li class="nav-item dropdown links">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                about
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown links">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                client
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                            </ul>
+                        </li>
+                        <li class="links"><a href="#">partner</a></li>
+                    </ul>
+                    <span class="nav-icons">
+                        <span class="me-2"><img src="./assets/img/Union.svg" alt="" /></span>
+                        <span class="me-2"><img src="./assets/img/mail.svg" alt="" /></span>
+                        <span class="me-2"><img src="./assets/img/media.svg" alt="" /></span>
+                    </span>
+                </div>
+                <div class="toggle-menu">
+                    <ul class="items-toggle">
+                        <li class="links"><a href="#">services</a></li>
+                        <li class="links"><a href="#">product</a></li>
+                        <li class="links"><a href="#">technology</a></li>
+                        <li class="links"><a href="#">partner</a></li>
+                    </ul>
+                    <ul class="nav-icons">
+                        <li class="me-3">
+                            <a href="./index.html">
+                                <img src="./assets/img/Union.svg" alt="" />
+                            </a>
+                        </li>
+                        <li class="me-3">
+                            <a href="#">
+                                <img src="./assets/img/mail.svg" alt="" />
+                            </a>
+                        </li>
+                        <li class="me-3">
+                            <a href="#">
+                                <img src="./assets/img/media.svg" alt="" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <ul class="links">
-                <li class="li-padding"><a href="#">services</a></li>
-                <li class="li-padding"><a href="#">product</a></li>
-                <li class="li-padding"><a href="#">technology</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        about
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        client
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                    </ul>
-                </li>
-                <li class="li-padding"><a href="#">partner</a></li>
-            </ul>
-            <ul class="social-icons">
-                <li><a href=""><img src="./assets/img/union.svg" alt="union"></a></li>
-                <li><a href=""><img src="./assets/img/mail.svg" alt="mail"></a></li>
-                <li><a href=""><img src="./assets/img/media.svg" alt="media"></a></li>
-            </ul>
-        </div>
-
+        </nav>
     </div>
-
 
     <div id="content">
         <div class="article">
