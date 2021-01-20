@@ -49,6 +49,12 @@ body{
                     margin-right: unset;
                   }
                 }
+                .container-fluid{
+                  height: 81px;
+                  .logo{
+                    padding-left: 5rem;
+                  }
+                }
                 .navbar-toggle {
                   display: none;
                 }
@@ -97,7 +103,7 @@ body{
                 transform-origin: right;
               
                 .items-toggle {
-                  font-size: 24px;
+                  font-size: 45px;
                   list-style: none;
                   a {
                     text-decoration: none;
@@ -110,7 +116,7 @@ body{
                   list-style: none;
                   background-color: white;
                   img {
-                    width: 24px;
+                    width: 40px;
                   }
                 }
               }
@@ -462,16 +468,49 @@ body{
                     margin-left: 2rem;
                     margin-bottom: 5px;
                     margin-right: 9rem;
+                    @include mobile{
+                      margin-right: unset;
+                      h5{
+                        font-size: 3rem;
+                      }
+                      p{
+                        font-size: 24px;
+                      }
+                    }
                   }
                   padding-bottom: 3rem;
                   &:first-child::before {
                     content: url("./img/alamat.svg");
+                    @include mobile{
+                      background-image:  url("./img/alamat.svg");
+                      background-repeat: no-repeat;
+                      background-size: 110px 110px;
+                      width: 175px;
+                      height: 110px;
+                      content: "";
+                    }
                   }
                   &:nth-child(2)::before {
                     content: url("./img/email.svg");
+                    @include mobile{
+                      background-image:  url("./img/email.svg");
+                      background-repeat: no-repeat;
+                      background-size: 110px 110px;
+                      width: 105px;
+                      height: 110px;
+                      content: "";
+                    }
                   }
                   &:last-child::before {
                     content: url("./img/telpon.svg");
+                    @include mobile{
+                      background-image:  url("./img/telpon.svg");
+                      background-repeat: no-repeat;
+                      background-size: 110px 110px;
+                      width: 105px;
+                      height: 110px;
+                      content: "";
+                    }
                   }
                 }
               }
@@ -492,7 +531,7 @@ body{
             background: #FFFFFF;
             margin-top: 28rem;
             @include mobile{
-              margin-top: 75rem;
+              margin-top: 50rem;
               height: 49rem;
             }
     
