@@ -41,6 +41,18 @@ body{
                 box-shadow: 0px 1px 7px #dfdfdf;
                 display: flex;
                 z-index: 9999;
+                .container{
+                  height: 81px;
+                  @include mobile{
+                    margin-right: unset;
+                  }
+                }
+                .container-fluid{
+                  height: 81px;
+                  .logo{
+                    padding-left: 5rem;
+                  }
+                }
                 .navbar-toggle {
                   display: none;
                 }
@@ -89,7 +101,7 @@ body{
                 transform-origin: right;
               
                 .items-toggle {
-                  font-size: 24px;
+                  font-size: 45px;
                   list-style: none;
                   a {
                     text-decoration: none;
@@ -102,7 +114,7 @@ body{
                   list-style: none;
                   background-color: white;
                   img {
-                    width: 24px;
+                    width: 40px;
                   }
                 }
               }

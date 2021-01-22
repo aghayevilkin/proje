@@ -47,6 +47,24 @@ body #header .navbar {
   z-index: 9999;
 }
 
+body #header .navbar .container {
+  height: 81px;
+}
+
+@media (max-width: 800px) {
+  body #header .navbar .container {
+    margin-right: unset;
+  }
+}
+
+body #header .navbar .container-fluid {
+  height: 81px;
+}
+
+body #header .navbar .container-fluid .logo {
+  padding-left: 5rem;
+}
+
 body #header .navbar .navbar-toggle {
   display: none;
 }
@@ -109,7 +127,7 @@ body #header .toggle-menu {
 }
 
 body #header .toggle-menu .items-toggle {
-  font-size: 24px;
+  font-size: 45px;
   list-style: none;
 }
 
@@ -128,7 +146,7 @@ body #header .toggle-menu .nav-icons {
 }
 
 body #header .toggle-menu .nav-icons img {
-  width: 24px;
+  width: 40px;
 }
 
 @media (max-width: 800px) {
