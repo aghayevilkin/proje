@@ -26,7 +26,7 @@ body{
     grid-template-rows: 1px 1fr 1fr 2fr 300px;
     @include mobile {
         height: 3700px;
-        grid-template-rows: 1px 4fr 1fr 1fr 300px;
+        grid-template-rows: 110px 4fr 1fr 1fr 300px;
     }
     
 
@@ -36,19 +36,19 @@ body{
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             .navbar {
                 width: 100%;
-                height: 90px;
+                height: 100px;
                 background: #ffffff;
                 box-shadow: 0px 1px 7px #dfdfdf;
                 display: flex;
                 z-index: 9999;
                 .container{
-                  height: 81px;
+                  height: 100px;
                   @include mobile{
                     margin-right: unset;
                   }
                 }
                 .container-fluid{
-                  height: 81px;
+                  height: 100px;
                   .logo{
                     padding-left: 5rem;
                   }
@@ -128,7 +128,14 @@ body{
                       }
                       .active {
                         transform: scale(1);
-                }
+                        margin-top: 1rem;
+                      }
+                      .navbar span #logo{
+                        width: 10rem;
+                      }
+                      .navbar span #burger{
+                        width: 3rem;
+                      }
             }  
         }
     
