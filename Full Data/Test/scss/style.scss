@@ -1,0 +1,8 @@
+* {
+  margin: unset;
+  padding: unset;
+}
+
+@import "./partials/header.scss";
+@import "./pages/home/main.scss";
+@import "./partials/footer.scss";

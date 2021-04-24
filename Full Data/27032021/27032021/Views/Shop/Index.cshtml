@@ -1,0 +1,311 @@
+﻿@model VmProduct
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/images/bg/2.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Shop Sidebar</h2>
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="#">Home</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb-item active">Shop Sidebar</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+<!-- Start Our ShopSide Area -->
+<section class="htc__shop__sidebar bg__white ptb--120">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                <div class="htc__shop__left__sidebar">
+                    <!-- Start Range -->
+                    <div class="htc-grid-range">
+                        <h4 class="section-title-4">FILTER BY PRICE</h4>
+                        <div class="content-shopby">
+                            <div class="price_filter s-filter clear">
+                                <form asp-controller="shop" asp-action="index" method="GET">
+                                    <div class="mb-3">
+                                        <label for="min" class="form-label">Minimum price</label>
+                                        <input type="number" asp-for="@Model.minPrice" class="form-control" id="min">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="max" class="form-label">Maximum price</label>
+                                        <input type="number" asp-for="@Model.maxPrice" class="form-control" id="max">
+                                    </div>
+                                    <input type="hidden" name="catId" value="@ViewBag.Filter["catId"]">
+
+                                    <button type="submit" class="btn btn-primary">Filter</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Range -->
+                    <!-- Start Product Cat -->
+                    <div class="htc__shop__cat">
+                        <h4 class="section-title-4">PRODUCT CATEGORIES</h4>
+                        <ul class="sidebar__list">
+                            @foreach (var item in Model.ProductCategories)
+                            {
+                                <li><a asp-controller="shop" asp-action="index" asp-all-route-data="@ViewBag.Filter" asp-route-catId="@item.Id">@item.Name <span>@item.Products.Count</span></a></li>
+                            }
+                        </ul>
+                    </div>
+                    <!-- End Product Cat -->
+                
+                    <!-- Start Tag Area -->
+                    <div class="htc__shop__cat">
+                        <h4 class="section-title-4">Tags</h4>
+                        <ul class="htc__tags">
+                            <li><a href="#">All</a></li>
+                            @foreach (var item in Model.Tags)
+                            {
+                                <li><a href="#">@item.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <!-- End Tag Area -->
+                </div>
+            </div>
+            <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 smt-30">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="producy__view__container">
+                            <!-- Start Short Form -->
+                            <div class="product__list__option">
+                                <div class="order-single-btn">
+                                    <select class="select-color selectpicker">
+                                        <option>Sort by newness</option>
+                                        <option>Match</option>
+                                        <option>Updated</option>
+                                        <option>Title</option>
+                                        <option>Category</option>
+                                        <option>Rating</option>
+                                    </select>
+                                </div>
+                                <div class="shp__pro__show">
+                                    <span>Showing 1 - 4 of 25 results</span>
+                                </div>
+                            </div>
+                            <!-- End Short Form -->
+                            <!-- Start List And Grid View -->
+                            <ul class="view__mode" role="tablist">
+                                <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-grid"></i></a></li>
+                                <li role="presentation" class="list-view"><a href="#list-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-view-list"></i></a></li>
+                            </ul>
+                            <!-- End List And Grid View -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="shop__grid__view__wrap">
+                        <!-- Start Single View -->
+                        <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
+
+                            @foreach (var item in Model.Products)
+                            {
+                                <!-- Start Single Product -->
+                                <div class="col-md-3 col-lg-4 col-sm-4 col-xs-12">
+                                    <div class="product">
+                                        <div class="product__inner">
+                                            <div class="pro__thumb">
+                                                <a href="#">
+                                                    <img src="~/images/product/@item.MainImage" alt="product images">
+                                                </a>
+                                            </div>
+                                            <div class="product__hover__info">
+                                                <ul class="product__action">
+                                                    <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                    <li><a class="addToCartList" data-id="@item.ColorToProducts.FirstOrDefault().Id" title="Add To Cart" href="#"><span class="ti-shopping-cart"></span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="add__to__wishlist">
+                                                <a data-toggle="tooltip" title="Add To Wishlist" class="add-to-cart" href="wishlist.html"><span class="ti-heart"></span></a>
+                                            </div>
+                                        </div>
+                                        <div class="product__details">
+                                            <h2><a asp-controller="shop" asp-action="details" asp-route-id="@item.Id">@item.Name</a></h2>
+                                            <ul class="product__price">
+                                                @if (item.ColorToProducts.FirstOrDefault().DiscountDeadline > DateTime.Now)
+                                                {
+                                                    <li class="old__price">$@item.ColorToProducts.FirstOrDefault().Price.ToString("0.00")</li>
+                                                    <li class="new__price">$@item.ColorToProducts.FirstOrDefault().DiscountPrice.ToString("0.00")</li>
+                                                }
+                                                else
+                                                {
+                                                    <li class="new__price">$@item.ColorToProducts.FirstOrDefault().Price.ToString("0.00")</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Product -->
+                            }
+
+                        </div>
+                        <!-- End Single View -->
+                        <!-- Start Single View -->
+                        <div role="tabpanel" id="list-view" class="single-grid-view tab-pane fade clearfix">
+                            <!-- Start List Content-->
+                            <div class="single__list__content clearfix">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                                    <div class="list__thumb">
+                                        <a href="product-details.html">
+                                            <img src="~/images/product/1.png" alt="list images">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12">
+                                    <div class="list__details__inner">
+                                        <h2><a href="product-details.html">Ninja Silhouette</a></h2>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet…</p>
+                                        <span class="product__price">$15.00</span>
+                                        <div class="shop__btn">
+                                            <a class="htc__btn" href="cart.html"><span class="ti-shopping-cart"></span>Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End List Content-->
+                            <!-- Start List Content-->
+                            <div class="single__list__content clearfix">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                                    <div class="list__thumb">
+                                        <a href="product-details.html">
+                                            <img src="~/images/product/2.png" alt="list images">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12">
+                                    <div class="list__details__inner">
+                                        <h2><a href="product-details.html">Ninja Silhouette</a></h2>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet…</p>
+                                        <span class="product__price">$15.00</span>
+                                        <div class="shop__btn">
+                                            <a class="htc__btn" href="cart.html"><span class="ti-shopping-cart"></span>Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End List Content-->
+                            <!-- Start List Content-->
+                            <div class="single__list__content clearfix">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                                    <div class="list__thumb">
+                                        <a href="product-details.html">
+                                            <img src="~/images/product/3.png" alt="list images">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12">
+                                    <div class="list__details__inner">
+                                        <h2><a href="product-details.html">Ninja Silhouette</a></h2>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet…</p>
+                                        <span class="product__price">$15.00</span>
+                                        <div class="shop__btn">
+                                            <a class="htc__btn" href="cart.html"><span class="ti-shopping-cart"></span>Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End List Content-->
+                            <!-- Start List Content-->
+                            <div class="single__list__content clearfix">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                                    <div class="list__thumb">
+                                        <a href="product-details.html">
+                                            <img src="~/images/product/4.png" alt="list images">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12">
+                                    <div class="list__details__inner">
+                                        <h2><a href="product-details.html">Ninja Silhouette</a></h2>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet…</p>
+                                        <span class="product__price">$15.00</span>
+                                        <div class="shop__btn">
+                                            <a class="htc__btn" href="cart.html"><span class="ti-shopping-cart"></span>Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End List Content-->
+                            <!-- Start List Content-->
+                            <div class="single__list__content clearfix">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                                    <div class="list__thumb">
+                                        <a href="product-details.html">
+                                            <img src="~/images/product/5.png" alt="list images">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12">
+                                    <div class="list__details__inner">
+                                        <h2><a href="product-details.html">Ninja Silhouette</a></h2>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet…</p>
+                                        <span class="product__price">$15.00</span>
+                                        <div class="shop__btn">
+                                            <a class="htc__btn" href="cart.html"><span class="ti-shopping-cart"></span>Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End List Content-->
+                            <!-- Start List Content-->
+                            <div class="single__list__content clearfix">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                                    <div class="list__thumb">
+                                        <a href="product-details.html">
+                                            <img src="~/images/product/6.png" alt="list images">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12">
+                                    <div class="list__details__inner">
+                                        <h2><a href="product-details.html">Ninja Silhouette</a></h2>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet…</p>
+                                        <span class="product__price">$15.00</span>
+                                        <div class="shop__btn">
+                                            <a class="htc__btn" href="cart.html"><span class="ti-shopping-cart"></span>Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End List Content-->
+                        </div>
+                        <!-- End Single View -->
+                    </div>
+                </div>
+                <div class="row">
+                    <nav style="display:flex; justify-content:center">
+                        <ul class="pagination">
+                            <li class="page-item @(ViewBag.ActivePage==1?"disabled":"")">
+                                <a class="page-link" asp-all-route-data="@ViewBag.Filter" asp-route-page="@(ViewBag.ActivePage==1?1:ViewBag.ActivePage-1)">Previous</a>
+                            </li>
+                            @for (int i = 1; i <= ViewBag.PageCount; i++)
+                            {
+                                <li class="page-item @(ViewBag.ActivePage==i?"active":"")"><a class="page-link" asp-controller="shop" asp-action="index" asp-all-route-data="@ViewBag.Filter" asp-route-page="@i">@i</a></li>
+                            }
+
+                            <li class="page-item @(ViewBag.ActivePage==ViewBag.PageCount?"disabled":"")">
+                                <a class="page-link" asp-controller="shop" asp-action="index" asp-all-route-data="@ViewBag.Filter" asp-route-page="@(ViewBag.ActivePage==ViewBag.PageCount?ViewBag.PageCount:ViewBag.ActivePage+1)">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Our ShopSide Area -->

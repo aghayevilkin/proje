@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to about</h1>
+        <p>@ViewBag.data</p>
+        <p>@ViewData["data2"]</p>
+        <p>@TempData.Peek("data3")</p>
+
+
+    <h1 class="display-4">Session</h1>
+    <p>@ViewBag.username</p>
+
+    <h1 class="display-4">Cookie</h1>
+    <p>@ViewBag.cookie</p>
+</div>

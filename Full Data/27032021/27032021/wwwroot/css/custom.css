@@ -1,0 +1,40 @@
+/*--------------------------------------------------------------
+  Template Name: Uniqlo-Minimalist eCommerce HTML5 Template.
+  Template URI: #
+  Description: Uniqlo is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
+  Author: HasTech
+  Author URI: https://themeforest.net/user/hastech/portfolio
+  Version: 1.1
+---------------------------------------------------------------*/
+
+/* ----------------------------------------------------
+	You can put your custom css code here: 
+-------------------------------------------------------*/
+
+
+.user {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+    .user:hover ul {
+        display: block;
+    }
+
+    .user ul {
+        display:none;
+        width: 175px;
+        position: absolute;
+        top: 30px;
+        background-color: #ededed;
+        padding: 8px 12px;
+    }
+
+        .user ul li {
+            padding: 0;
+        }
+
+            .user ul li h3 {
+                color: #ff4136;
+            }

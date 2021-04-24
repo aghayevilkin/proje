@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.center {
+  @apply flex justify-center items-center;
+}
+
+.block-scroll {
+  @apply hidden max-h-full relative;
+}
+
+.bg-tint {
+  background-color: rgba(238, 66, 72);
+}
+
+.text-tint {
+  color: rgba(238, 66, 72);
+}
+
+.bg-smoke {
+  background-color: rgba(246, 246, 246);
+}
+
+.lg\:h-90vh {
+  height: 90vh;
+}
+
+.md\:text-5x6 {
+  font-size: 3.4rem;
+  line-height: 1;
+}
+.sm\:text-5x6 {
+  font-size: 3.4rem;
+  line-height: 1;
+}

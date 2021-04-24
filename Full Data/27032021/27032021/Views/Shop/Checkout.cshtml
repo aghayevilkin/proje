@@ -1,0 +1,146 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@using Newtonsoft.Json
+@model VmCustomerNotRegistered
+@{
+    ViewData["Title"] = "Checkout";
+    string logedinCustomer = HttpContextAccessor.HttpContext.Session.GetString("ValidCustomer");
+    Customer customer = null;
+    if (logedinCustomer != null)
+    {
+        customer = JsonConvert.DeserializeObject<Customer>(logedinCustomer);
+    }
+}
+
+
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/images/bg/2.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Checkout</h2>
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="index.html">Home</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb-item active">Checkout</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+<!-- Start Checkout Area -->
+<section class="our-checkout-area ptb--120 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-8">
+                <div class="ckeckout-left-sidebar">
+                    <!-- Start Checkbox Area -->
+                    <form asp-controller="shop" asp-action="checkout" method="post">
+                        <div class="checkout-form">
+                            <h2 class="section-title-3">Billing details</h2>
+                            @if (customer != null)
+                            {
+                                <h1>@customer.Name</h1>
+                            }
+                            else
+                            {
+                                <div class="checkout-form-inner">
+                                    <div class="single-checkout-box">
+                                        <input type="text" asp-for="@Model.Name" placeholder="First Name*">
+                                        <input type="text" asp-for="@Model.Surname" placeholder="Last Name*">
+                                    </div>
+                                    <div class="single-checkout-box">
+                                        <input type="email" asp-for="@Model.Email" placeholder="Emil*">
+                                        <input type="text" asp-for="@Model.Phone" placeholder="Phone*">
+                                    </div>
+                                    <div class="single-checkout-box">
+                                        <input asp-for="@Model.Address" placeholder="Emil*">
+                                    </div>
+                                    <div class="single-checkout-box select-option mt--40">
+                                        <select asp-for="@Model.CountryId" asp-items="@(new SelectList(ViewBag.Coutry, "Id", "Name"))">
+                                        </select>
+                                        <input type="text" asp-for="@Model.Company" placeholder="Company Name">
+                                    </div>
+                                    <div class="single-checkout-box">
+                                        <input asp-for="@Model.State" placeholder="State">
+                                        <input asp-for="@Model.ZipCode" placeholder="Zip Code*">
+                                    </div>
+                                    <div class="single-checkout-box checkbox">
+                                        <input id="remind-me" asp-for="@Model.CreateAccount">
+                                        <label for="remind-me"><span></span>Create a Account ?</label>
+                                    </div>
+
+                                    <div class="single-checkout-box" id="CreateAccout" style="@(Model!=null && Model.CreateAccount==true?"":"display:none;")">
+                                        <input type="password" asp-for="@Model.Password" placeholder="Password">
+                                        <span class="text-danger" asp-validation-for="@Model.Password"></span>
+                                        <input type="password" asp-for="@Model.ConfirmPassword" placeholder="Password confirm*">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <!-- End Checkbox Area -->
+                        <!-- Start Payment Box -->
+                        <div class="payment-form">
+                            <h2 class="section-title-3">payment details</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur kgjhyt</p>
+                            <div class="payment-form-inner">
+                                <div class="single-checkout-box">
+                                    <input asp-for="@Model.CardOwnerName" placeholder="Name on Card*">
+                                    <input asp-for="@Model.CardNumber" placeholder="Card Number*">
+                                </div>
+                                <div class="single-checkout-box select-option">
+                                    <input asp-for="@Model.CardDate" placeholder="Date*">
+                                    <input asp-for="@Model.SecurityCode" placeholder="Security Code*">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkout-btn">
+                            <button type="submit" class="ts-btn btn-light btn-primary hover-theme">CONFIRM & BUY NOW</button>
+                        </div>
+                    </form>
+
+                    <!-- End Payment Box -->
+                    <!-- Start Payment Way -->
+                    <div class="our-payment-sestem">
+                        <h2 class="section-title-3">We  Accept :</h2>
+                        <ul class="payment-menu">
+                            <li><a href="#"><img src="~/images/payment/1.jpg" alt="payment-img"></a></li>
+                            <li><a href="#"><img src="~/images/payment/2.jpg" alt="payment-img"></a></li>
+                            <li><a href="#"><img src="~/images/payment/3.jpg" alt="payment-img"></a></li>
+                            <li><a href="#"><img src="~/images/payment/4.jpg" alt="payment-img"></a></li>
+                            <li><a href="#"><img src="~/images/payment/5.jpg" alt="payment-img"></a></li>
+                        </ul>
+
+                    </div>
+                    <!-- End Payment Way -->
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <div class="checkout-right-sidebar">
+                    <div class="our-important-note">
+                        <h2 class="section-title-3">Note :</h2>
+                        <p class="note-desc">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed do eiusmod tempor incididunt ut laborekf et dolore magna aliqua.</p>
+                        <ul class="important-note">
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet, consectetur nipabali</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet, consectetur nipabali</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet, consectetur nipabali</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet</a></li>
+                        </ul>
+                    </div>
+                    <div class="puick-contact-area mt--60">
+                        <h2 class="section-title-3">Quick Contract</h2>
+                        <a href="phone:+8801722889963">+88 01900 939 500</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Checkout Area -->

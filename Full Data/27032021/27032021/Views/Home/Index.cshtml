@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to home</h1>
+    <p>@ViewBag.data</p>
+    <p>@ViewData["data2"]</p>
+    <p>@TempData.Peek("data3")</p>
+</div>

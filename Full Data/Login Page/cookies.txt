@@ -1,0 +1,8 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.fontawesome.com	TRUE	/	FALSE	1999999999	__cfduid	df8c9e4b6931ec29a8c00f4b167645c391615368826
+kit.fontawesome.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+.vdo.ai	TRUE	/	FALSE	1999999999	__cf_bm	6b71219396dba0d7988fea294ca10f45c72b9c76-1615368827-1800-Ad5HeLC3EyTG0dZphNb0m8Ge4Q+wVSYa7wSAT5cHGWHiAb8pqXrR7/mav6r/e0OZrDm/wgy+64JbYEGI54Dpci4=
+.vdo.ai	TRUE	/	FALSE	1999999999	__cfduid	d7a7756eb4ceb4052b85cea9bc84fbff51615368828
+a.vdo.ai	TRUE	/	FALSE	1999999999	SameSite	Lax
+
